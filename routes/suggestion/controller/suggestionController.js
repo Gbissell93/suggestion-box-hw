@@ -20,6 +20,11 @@ module.exports = {
             err ? callback(err, null) : callback(null, foundSuggestion)
         });
     },
+    getSingleSuggestions: (id, callback) =>{
+        Suggestion.findById(id, (err, foundSuggestion) => {
+            err ? callback(err, null) : callback(null, foundSuggestion)
+        });
+    },
 
     updateSuggestion: (id, body, callback) => {
         Suggestion.findByIdAndUpdate(id,

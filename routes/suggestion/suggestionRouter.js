@@ -15,6 +15,18 @@ router.get('/', function(req, res,) {
   });
 });
 
+router.get('/:id', function(req, res,) {
+  suggestionController.getSingleSuggestions(req.params.id, (err, foundSuggestion) => {
+    if (err) {
+      res.status(500)
+      .json({ message: "something went wrong!", 
+      error: err.message})
+    } else {
+      res.json({ message: "success!", foundSuggestion })
+    }
+  });
+});
+
 // POST new suggestion
 router.post('/add-new', (req, res) => {
     suggestionController.addSuggestion(req.body, (err, newSuggestion) => {
